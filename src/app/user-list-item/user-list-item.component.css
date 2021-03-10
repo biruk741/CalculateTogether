@@ -2,6 +2,10 @@
   padding: 20px;
   width: 100%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.116);
+  cursor: pointer;
+}
+.outer:hover{
+  background-color: rgb(231, 231, 231);
 }
 .profile{
   display: flex;

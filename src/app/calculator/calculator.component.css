@@ -17,7 +17,7 @@
 }
 
 .main {
-  background-color: #ccc;
+  background-color: rgb(235, 235, 235);
   border-bottom: 20px solid #aaa;
   width: 500px;
   padding: 20px;
@@ -69,22 +69,28 @@ span:hover {
 .screen {
   background-color: rgb(158, 158, 158);
   border-radius: 8px;
-  height: 100px;
+  height: 120px;
   width: 95%;
   margin: 10px;
-  padding: 18px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-#output {
+#output,#steps {
   margin: 0px;
   width: 100%;
   text-align: right;
   font-size: 70px;
   font-family: 'Pocket Calculator', Cochin, Georgia, Times, 'Times New Roman', serif;
   overflow: hidden;
-  direction: rtl;
+  direction: ltr;
   overflow-anchor: left;
+}
+#steps{
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.459);
+  direction: ltr;
 }

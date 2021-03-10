@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Stack } from '../stack';
+import { Queue } from '../queue';
 
 @Component({
   selector: 'app-calculator',
@@ -10,14 +10,16 @@ export class CalculatorComponent implements OnInit {
 
   constructor() { }
 
-  displayedText = "0";
-  tempNumber = "0";
-  stack: Stack<String> = new Stack(100);
+  displayedText: string = "0";
+  tempNumber: string = "0";
+  stack: Queue = new Queue();
+  steps: string = "0";
+  shownResult: boolean = false;
 
   ngOnInit(): void {
   }
 
-  clicked(type) {
+  clicked(type: string) {
     console.log(type);
 
     if ("+=-/XC".includes(type)) switch (type) {
@@ -25,39 +27,46 @@ export class CalculatorComponent implements OnInit {
         this.stack.push(this.tempNumber);
         this.stack.push(type);
         this.tempNumber = "";
-        this.displayedText = "0"
+        this.displayedText = "0";
+        this.steps = this.stack.getContents(true);
         break;
       }
       case "C": {
-        this.update(false);
-
+        this.clear();
         break;
       }
       case "=": this.calculate();
     }
 
     else {
-      if (this.displayedText === "0") {
-        this.displayedText = ""; this.tempNumber = "";
+      if (this.shownResult) {
+        this.shownResult = false;
+        this.clear();
       }
-      this.update(true, type)
+      this.update(type)
     }
 
   }
-  update(increment, val?) {
-    if (increment) {
-      this.displayedText += val;
-      this.tempNumber += val;
+  update(val: string) {
+    if (this.displayedText === "0") {
+      this.displayedText = ""; this.tempNumber = "";
     }
-    else {
-      this.displayedText = "0";
-      this.tempNumber = "0";
-      this.stack.empty()
-    }
+    this.displayedText += val;
+    this.tempNumber += val;
+  }
+  clear() {
+    this.stack.empty();
+    this.displayedText = "0";
+    this.tempNumber = "0"
+    this.steps = "0";
   }
   calculate() {
-    this.displayedText = "RESULT";
+    this.steps = this.stack.getContents() + ((this.tempNumber.length > 0) ? this.tempNumber : "") + "=";
     if (this.tempNumber.length > 0) this.stack.push(this.tempNumber);
     this.stack.printContents();
+    this.displayedText = this.stack.getResult();
+    this.stack.empty();
+    this.tempNumber = "";
+    this.shownResult = true;
   }
 }
