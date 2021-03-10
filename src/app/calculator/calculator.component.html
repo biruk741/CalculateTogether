@@ -1,1 +1,22 @@
-<p>calculator works!</p>
+<div class="outer">
+
+  <div class="main">
+    <div class="screen">
+      <h1 id="output">
+        {{displayedText}}
+      </h1>
+    </div>
+    <div class="_row">
+      <app-button [type]="'7'" (clicked)="clicked($event)"></app-button><app-button [type]="'8'" (clicked)="clicked($event)"></app-button><app-button [type]="'9'" (clicked)="clicked($event)"></app-button><app-button [type]="'+'" (clicked)="clicked($event)"></app-button>
+    </div>
+    <div class="_row">
+      <app-button [type]="'4'" (clicked)="clicked($event)"></app-button><app-button [type]="'5'" (clicked)="clicked($event)"></app-button><app-button [type]="'6'" (clicked)="clicked($event)"></app-button><app-button [type]="'-'" (clicked)="clicked($event)"></app-button>
+    </div>
+    <div class="_row">
+      <app-button [type]="'1'" (clicked)="clicked($event)"></app-button><app-button [type]="'2'" (clicked)="clicked($event)"></app-button><app-button [type]="'3'" (clicked)="clicked($event)"></app-button><app-button [type]="'X'" (clicked)="clicked($event)"></app-button>
+    </div>
+    <div class="_row">
+      <app-button [type]="'C'" (clicked)="clicked($event)"></app-button><app-button [type]="'0'" (clicked)="clicked($event)"></app-button><app-button [type]="'/'" (clicked)="clicked($event)"></app-button><app-button [type]="'='" (clicked)="clicked($event)" [isEquals] = "true"></app-button>
+    </div>
+  </div>
+</div>

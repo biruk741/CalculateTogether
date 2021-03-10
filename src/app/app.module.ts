@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     CalculatorComponent,
-    UserListItemComponent
+    UserListItemComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,33 @@
+span {
+  flex: 1;
+  background-color: rgb(133, 133, 133);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 40px 5px 40px 5px;
+  border-radius: 5px;
+  font-size: larger;
+  border-bottom: 10px solid rgb(99, 99, 99);
+  cursor: pointer;
+  transition-duration: 100ms;
+}
+
+span:hover {
+  background-color: rgb(156, 156, 156);
+  border-bottom: 8px solid rgb(99, 99, 99);
+  margin-top: 12px;
+}
+
+#equals {
+  background-color: #2196f3;
+  color: #fff;
+  border-bottom: 10px solid #197fd3;
+}
+
+#equals:hover {
+  background-color: #4aabfa;
+  border-bottom: 8px solid #197fd3;
+  margin-top: 12px;
+}
