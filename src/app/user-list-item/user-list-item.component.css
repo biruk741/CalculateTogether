@@ -1,11 +1,12 @@
 .outer{
   padding: 20px;
-  width: 100%;
+  width: 90%;
   border-bottom: 2px solid rgba(0, 0, 0, 0.116);
-  cursor: pointer;
-}
-.outer:hover{
-  background-color: rgb(231, 231, 231);
+  cursor: default;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 20px;
 }
 .profile{
   display: flex;
@@ -18,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #2196f3;
+  background-color: #02AAB0;
   color: white;
   border-radius: 200px;
   font-size: x-large;
@@ -28,5 +29,11 @@
   padding-left: 20px;
 }
 .output{
-  margin-left: 70px;
+  font-weight: 500;
+  font-size: larger;
+  color: rgba(0, 0, 0, 0.788);
+}
+
+h5{
+  font-weight: 400;
 }

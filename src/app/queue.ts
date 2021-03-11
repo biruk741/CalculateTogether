@@ -32,7 +32,7 @@ export class Queue {
     console.log('Queue Contents');
     this.queue.forEach(item => console.log(item));
   }
-  public getContents(addSpaces?): string {
+  public getContents(addSpaces?: boolean): string {
     let s: string = "";
     this.queue.forEach(item => { s += `${item}` + (addSpaces ? ' ' : '') });
     return s;
@@ -40,66 +40,49 @@ export class Queue {
   public getResult(): string {
     try {
       if (!this.check()) return "Invalid input";
-      console.log(this.getContents());
-
       return this.process().toString();
     } catch (e) {
-      console.log(e);
+      console.error(e);
     } finally { this.empty() }
   }
   private process(): number {
     let queue: string[] = this.clone(this.queue);
     let index = 0;
     while (queue.length != 1) {
-
       if (queue.includes("X") || queue.includes("/")) {
-        let priorityIndex = queue.indexOf("X");
+        let priorityIndex = queue.indexOf("X") > 0 ? queue.indexOf("X") : queue.indexOf("/");
         let num1 = queue[priorityIndex - 1];
         let operand = queue[priorityIndex];
         let num2 = queue[priorityIndex + 1];
         let result = this.operate(num1, operand, num2);
-        console.log("before: " + queue);
-        queue.splice(priorityIndex -1, 3, result.toString())
-        console.log("after: " + queue);
-
-      } else if(queue.includes("+") || queue.includes("-")){
+        queue.splice(priorityIndex - 1, 3, result.toString())
+      } else if (queue.includes("+") || queue.includes("-")) {
         let num1 = queue[index];
         let operand = queue[index + 1];
         let num2 = queue[index + 2];
         let result = this.operate(num1, operand, num2);
-        console.log("before: " + queue);
         queue.splice(index, 3, result.toString())
-        console.log("after: " + queue);
       }
     }
-    return parseInt(queue[0]);
+    return parseFloat(queue[0]);
   }
-  private clone(a) {
+  private clone(a: string[]) {
     return JSON.parse(JSON.stringify(a));
   }
   private operate(n1: string, o: string, n2: string): number {
-    const a = parseInt(n1);
-    const b = parseInt(n2);
+    const a = parseFloat(n1);
+    const b = parseFloat(n2);
     switch (o) {
       case "+": return a + b;
       case "-": return a - b;
       case "/": return a / b;
       case "X": return a * b;
-      default: throw "unsupported operand";
+      default: throw "unsupported operand " + o;
     }
   }
   private check(): boolean {
-    console.log(this.queue);
-    console.log(this.getContents());
-
-
     let previousWasOperand = true;
-
     this.queue.forEach(item => {
-      console.log(previousWasOperand && this.isOperand(item));
-      console.log(!previousWasOperand && !this.isOperand(item));
-      console.log(this.queue.length);
-
       if (previousWasOperand && this.isOperand(item)) return false;
       if (!previousWasOperand && !this.isOperand(item)) return false;
       previousWasOperand = this.isOperand(item);

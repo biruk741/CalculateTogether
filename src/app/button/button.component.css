@@ -1,6 +1,6 @@
 span {
   flex: 1;
-  background-color: rgb(133, 133, 133);
+  background-color: rgb(175, 175, 175);
   height: 30px;
   display: flex;
   align-items: center;
@@ -9,14 +9,14 @@ span {
   padding: 40px 5px 40px 5px;
   border-radius: 5px;
   font-size: xx-large;
-  border-bottom: 10px solid rgb(99, 99, 99);
+  border-bottom: 10px solid rgb(146, 146, 146);
   cursor: pointer;
   transition-duration: 100ms;
 }
 
 span:hover {
-  background-color: rgb(156, 156, 156);
-  border-bottom: 8px solid rgb(99, 99, 99);
+  background-color: rgb(192, 192, 192);
+  border-bottom: 8px solid rgb(146, 146, 146);
   margin-top: 12px;
 }
 

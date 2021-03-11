@@ -28,7 +28,7 @@ app-button{
 }
 span {
   flex: 1;
-  background-color: rgb(133, 133, 133);
+  background-color:  rgb(184, 184, 184);
   height: 30px;
   display: flex;
   align-items: center;
@@ -43,7 +43,7 @@ span {
 }
 
 span:hover {
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(172, 172, 172);
   border-bottom: 8px solid rgb(99, 99, 99);
   margin-top: 12px;
 }
@@ -67,7 +67,7 @@ span:hover {
 }
 
 .screen {
-  background-color: rgb(158, 158, 158);
+  background-color: rgb(185, 185, 185);
   border-radius: 8px;
   height: 120px;
   width: 95%;

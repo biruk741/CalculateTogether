@@ -1,14 +1,14 @@
 <div class="outer">
   <div class="profile">
     <div class="pp">
-      B
+      {{name.charAt(0)}}
     </div>
     <div class="profile-content">
-      <h5>Biruk</h5>
-      <p>Online</p>
+      <h5>{{name}}</h5>
+      <div class="output">
+        {{calculation !== "" ? calculation : "Hasn't started yet."}}
+      </div>
     </div>
   </div>
-  <div class="output">
-    2 + 3 = 5
-  </div>
+
 </div>

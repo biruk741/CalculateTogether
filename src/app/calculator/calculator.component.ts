@@ -1,5 +1,7 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Queue } from '../queue';
+import { User } from '../datatypes/user';
 
 @Component({
   selector: 'app-calculator',
@@ -8,15 +10,17 @@ import { Queue } from '../queue';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   displayedText: string = "0";
   tempNumber: string = "0";
   stack: Queue = new Queue();
   steps: string = "0";
   shownResult: boolean = false;
+  user: User;
 
   ngOnInit(): void {
+    this.user = this.userService.currentUser;
   }
 
   clicked(type: string) {
@@ -61,10 +65,18 @@ export class CalculatorComponent implements OnInit {
     this.steps = "0";
   }
   calculate() {
-    this.steps = this.stack.getContents() + ((this.tempNumber.length > 0) ? this.tempNumber : "") + "=";
+    this.steps = this.stack.getContents(true) + ((this.tempNumber.length > 0) ? this.tempNumber : "") + "=";
     if (this.tempNumber.length > 0) this.stack.push(this.tempNumber);
-    this.stack.printContents();
-    this.displayedText = this.stack.getResult();
+
+    let result = this.stack.getResult();
+    this.userService.updateUsers(
+      {
+        username: this.user.username,
+        time:new Date().getTime(),
+        calculation: `${this.steps} ${result}`
+      })
+    this.displayedText = result;
+
     this.stack.empty();
     this.tempNumber = "";
     this.shownResult = true;

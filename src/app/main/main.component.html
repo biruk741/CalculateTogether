@@ -5,9 +5,20 @@
         Calculate together
       </h3>
     </div>
-    <app-user-list-item *ngFor="let i of [1,2,3,4,5,6,7,8]"></app-user-list-item>
+    <app-user-list-item [user]="user" *ngFor="let user of users"></app-user-list-item>
   </div>
   <div class="right">
-    <app-calculator style="height: 100%;"></app-calculator>
+    <app-calculator *ngIf="loggedIn" style="height: 100%;"></app-calculator>
+    <div class="card" *ngIf="!loggedIn">
+      <h3>Welcome</h3>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@</span>
+        </div>
+        <input [(ngModel)]="username" type="text" class="form-control" placeholder="Username" name="username">
+      </div>
+      <p *ngIf="invalid" style="color: rgb(255, 56, 115);">Please enter a valid username</p>
+      <button (click)="login()" type="button" class="btn btn-success">Enter!</button>
+    </div>
   </div>
 </div>
