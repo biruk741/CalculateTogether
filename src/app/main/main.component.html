@@ -1,4 +1,6 @@
 <div class="outer">
+  <div id="gradient">
+  </div>
   <div class="left">
     <div class="logo">
       <h3>
@@ -10,7 +12,7 @@
     </div>
   </div>
   <div class="right">
-    <app-calculator *ngIf="loggedIn" style="height: 100%;"></app-calculator>
+    <app-calculator *ngIf="loggedIn" style="height: 100%;width: 100%;"></app-calculator>
     <div class="card" *ngIf="!loggedIn">
       <h3>Welcome</h3>
       <div class="input-group mb-3">

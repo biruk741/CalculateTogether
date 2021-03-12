@@ -94,3 +94,13 @@ span:hover {
   color: rgba(0, 0, 0, 0.459);
   direction: ltr;
 }
+@media screen and (max-width:952px) {
+  .main {
+    background-color: rgb(235, 235, 235);
+    border-bottom: 20px solid #aaa;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
