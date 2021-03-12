@@ -5,7 +5,9 @@
         Calculate together
       </h3>
     </div>
-    <app-user-list-item [user]="user" *ngFor="let user of users"></app-user-list-item>
+    <div class="list">
+      <app-user-list-item [user]="user" *ngFor="let user of users"></app-user-list-item>
+    </div>
   </div>
   <div class="right">
     <app-calculator *ngIf="loggedIn" style="height: 100%;"></app-calculator>

@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "CalculateTogether"
+  "defaultProject": "CalculateTogether",
+  "cli": {
+    "analytics": "9c442438-3568-4c4c-91e7-ce2e82c55142"
+  }
 }
