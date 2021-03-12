@@ -69,12 +69,12 @@ export class CalculatorComponent implements OnInit {
     if (this.tempNumber.length > 0) this.stack.push(this.tempNumber);
 
     let result = this.stack.getResult();
-    this.userService.updateUsers(
+    if (result !== 'Invalid input' && result !== 'NaN') this.userService.updateUsers(
       {
         username: this.user.username,
-        time:new Date().getTime(),
+        time: new Date().getTime(),
         calculation: `${this.steps} ${result}`
-      })
+      });
     this.displayedText = result;
 
     this.stack.empty();
